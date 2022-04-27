@@ -13,7 +13,14 @@ import org.junit.runner.RunWith;
 
         glue = "stepDefinitions",
 
-        stepNotifications = true
+        stepNotifications = true,
+
+        snippets = CucumberOptions.SnippetType.CAMELCASE,
+
+        plugin = {"pretty",
+                "html:target/duobank-report/built-in-report.html",
+                "json:target/Cucumber.json"
+        }
 
         //,dryRun = true
 )

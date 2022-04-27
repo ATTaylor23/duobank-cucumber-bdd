@@ -161,23 +161,6 @@ public class SeleniumUtils {
 
     }
 
-    public static String getScreenshotOnPass () {
-        TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
-        File source = ts.getScreenshotAs(OutputType.FILE);
-        String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
-        String fileName = "passed" + date + ".png";
-        String target = System.getProperty("user.dir") + "/target/extentReports/" + fileName;
-        File finalDestination = new File(target);
-
-        try {
-            FileUtils.copyFile(source, finalDestination);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return fileName;
-
-    }
-
     public static void scroll(int horizontalAxis, int verticalAxis) {
         JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
         js.executeScript("window.scrollBy("+horizontalAxis+","+verticalAxis+")");
