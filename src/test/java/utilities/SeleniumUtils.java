@@ -38,7 +38,7 @@ public class SeleniumUtils {
         List<String> elemTexts = new ArrayList<>();
         for (WebElement el : list) {
             if (!el.getText().isEmpty()) {
-                elemTexts.add(el.getText());
+                elemTexts.add(el.getText().trim());
             }
         }
         return elemTexts;
