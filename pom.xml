@@ -76,8 +76,16 @@
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
 
+                    <!--the following 2 lines are for running feature files in parallel -->
+                    <parallel>methods</parallel>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
+
                     <includes>
+                        <!--suppress UnresolvedMavenProperty -->
                         <include>**/*DuobankRunner.java</include>
+                        <include>**/*FailedScenariosRunner.java</include>
+<!--                        <include>**/*ParallelRunner.java</include>-->
+<!--                        <include>${runnerClass}}</include>-->
                     </includes>
 
                 </configuration>

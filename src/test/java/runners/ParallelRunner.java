@@ -7,9 +7,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 
 @CucumberOptions(
+
         tags = "@temp",
 
-        features = "src/test/resources",
+        features = "src/test/resources/",
 
         glue = "stepDefinitions",
 
@@ -26,5 +27,6 @@ import org.junit.runner.RunWith;
         //,dryRun = true
 )
 
-public class DuobankRunner {
+
+public class ParallelRunner {
 }
