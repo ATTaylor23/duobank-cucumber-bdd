@@ -11,11 +11,11 @@ import java.time.Duration;
 
 public class Hooks {
 
-    @Before("@module1")
+    @Before
     public void setup() {
-        Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Driver.getDriver().manage().window().maximize();
-
+        Driver.getDriver().manage().deleteAllCookies();
 
         }
 
