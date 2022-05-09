@@ -65,6 +65,13 @@
         <version>7.3.1</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.29</version>
+    </dependency>
+
 </dependencies>
 
     <build>
@@ -82,9 +89,9 @@
 
                     <includes>
                         <!--suppress UnresolvedMavenProperty -->
-                        <include>**/*DuobankRunner.java</include>
-                        <include>**/*FailedScenariosRunner.java</include>
-<!--                        <include>**/*ParallelRunner.java</include>-->
+<!--                        <include>**/*DuobankRunner.java</include>-->
+<!--                        <include>**/*FailedScenariosRunner.java</include>-->
+                        <include>**/*ParallelRunner.java</include>
 <!--                        <include>${runnerClass}}</include>-->
                     </includes>
 

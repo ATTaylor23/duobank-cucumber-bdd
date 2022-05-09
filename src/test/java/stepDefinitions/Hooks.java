@@ -5,6 +5,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import utilities.DBUtility;
 import utilities.Driver;
 
 import java.time.Duration;
@@ -18,6 +19,17 @@ public class Hooks {
         Driver.getDriver().manage().deleteAllCookies();
 
         }
+    @Before  ("@db")         // the before logic that runs before all scenarios tagged with @db
+    public void setupDB(){
+
+        DBUtility.createConnection();
+
+    }
+
+    @After  ("@db")
+    public void tearDownDB(){
+        DBUtility.close();
+    }
 
     @After
     public void teardown(Scenario scenario){
@@ -30,7 +42,6 @@ public class Hooks {
             scenario.attach(screenshotAs, "image/png", "failed");
 
         }
-
         Driver.quitDriver();
     }
 
