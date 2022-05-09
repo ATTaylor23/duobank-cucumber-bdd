@@ -8,7 +8,7 @@ Scenario: Verify Sign Up page
   When I click on the Sign Up link
   Then The url should be "correct"
 
-  @signUpPage @signUp @testing
+  @signUpPage @signUp
 Scenario: Verify all input dialogue boxes are available
   When I click on the Sign Up link
   Then I should see the expected List of Strings

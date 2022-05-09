@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @CucumberOptions(
 
-        tags = "@test",
+        tags = "@signUpPage",
 
         features = "src/test/resources",
 
