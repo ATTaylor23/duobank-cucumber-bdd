@@ -15,12 +15,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.SignUpPage;
+import utilities.DBUtility;
 import utilities.Driver;
 import utilities.PropertyReader;
 import utilities.SeleniumUtils;
 
+import java.sql.SQLException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 import java.util.SortedMap;
 
 public class SignUpStepDefs {
@@ -137,12 +140,13 @@ public class SignUpStepDefs {
 
     }
     @Then("I should see my {string} on the page")
-    public void iShouldSeeMyOnThePage(String fullName) {
+    public void iShouldSeeMyOnThePage(String fullName) throws SQLException {
         SignUpPage signUpPage = new SignUpPage();
         fullName = first + " " + last;
         String newName = signUpPage.userName.getText();
 
         Assert.assertEquals(fullName, newName);
+
 
     }
     @Then("The {string} should remain the same")
@@ -225,7 +229,56 @@ public class SignUpStepDefs {
         Assert.assertEquals(signUpPage.Greetings.getText().trim(), text);
 
     }
+    String expectedFirst;
+    String expectedLast;
+    String expectedEmail;
+    String expectedPassword;
 
+    @Then("I sign up using the following credentials")
+    public void iSignUpUsingTheFollowingCredentials(List<Map<String,String>> dataTable) {
+
+        Map<String,String> map = dataTable.get(0);
+        SignUpPage signUpPage = new SignUpPage();
+
+        expectedFirst = map.get("FIRST NAME");
+        signUpPage.FirstBox2.sendKeys(expectedFirst);
+
+        expectedLast = map.get("LAST NAME");
+        signUpPage.LastBox2.sendKeys(expectedLast);
+
+        expectedEmail = map.get("EMAIL ADDRESS");
+        signUpPage.EmailBox2.sendKeys(expectedEmail);
+
+        expectedPassword = map.get("PASSWORD");
+        signUpPage.PasswordBox2.sendKeys(expectedPassword);
+
+
+    }
+    @Then("I enter the saved email {string} and password {string}")
+    public void iEnterTheSavedEmailAndPassword(String email, String pass) {
+
+        SignUpPage signUpPage = new SignUpPage();
+        email = expectedEmail;
+        pass = expectedPassword;
+
+        signUpPage.EmailBox.sendKeys(email);
+        signUpPage.PasswordBox.sendKeys(pass);
+
+    }
+    @Then("I should be able to verify the {string} located on the page")
+    public void iShouldBeAbleToVerifyTheLocatedOnThePage(String name) throws SQLException {
+
+        SignUpPage signUpPage = new SignUpPage();
+        name = expectedFirst + " " + expectedLast;
+
+        String newName = signUpPage.userName.getText();
+
+        Assert.assertEquals(name, newName);
+
+        String updateQueryNow = "delete from tbl_user where email='"+expectedEmail+"'";
+        DBUtility.updateQuery(updateQueryNow);
+
+    }
 
 
 
