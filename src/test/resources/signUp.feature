@@ -92,5 +92,25 @@ Scenario: Verify "Don't have an account?" text
   When I find an element
   Then I should see its text "text"
 
+  @db
+Scenario Outline: Verify positive sign up with sign in using Scenario Outline
+  When I click to sign up
+  Then I sign up using the following credentials
+    | FIRST NAME | LAST NAME | EMAIL ADDRESS | PASSWORD   |
+    | <first>    | <last>    | <email>       | <password> |
+  And I click the Sign Up button
+  When The new page appears
+  Then I enter the saved email "<email>" and password "<password>"
+  And I click the Login button
+  Then I should be able to verify the "full name" located on the page
+
+  Examples:
+    | first     | last      | email                      | password   |
+    | Tab       | Schulter  | tschulter0@fastcompany.com | cxfLuj     |
+    | Dorian    | Kingsbury | dkingsbury1@flavors.me     | JmWLNQf7   |
+    | Antony    | Maystone  | amaystone2@joomla.org      | MKZUdDVt   |
+    | Gilemette | Gable     | ggable3@indiatimes.com     | fKNvLiFcYD |
+    | Biddie    | Wybourne  | bwybourne4@youtu.be        | RQYUB9     |
+
 
 

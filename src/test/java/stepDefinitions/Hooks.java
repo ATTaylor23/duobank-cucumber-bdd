@@ -19,16 +19,17 @@ public class Hooks {
         Driver.getDriver().manage().deleteAllCookies();
 
         }
-    @Before  ("@db")         // the before logic that runs before all scenarios tagged with @db
+    @Before  ("@db")
     public void setupDB(){
 
         DBUtility.createConnection();
 
     }
-
     @After  ("@db")
     public void tearDownDB(){
+
         DBUtility.close();
+
     }
 
     @After
