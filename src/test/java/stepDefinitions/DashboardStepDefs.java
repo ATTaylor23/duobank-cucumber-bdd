@@ -357,6 +357,20 @@ public class DashboardStepDefs {
         Assert.assertEquals(total, (price - downP));
 
     }
+    List<String> actualColumnNames;
+
+//    @When("I send a query to retrieve column names for tbl_mortagage table")
+//    public void iSendAQueryToRetrieveColumnNamesForTblMortagageTable() {
+//
+//        actualColumnNames = DBUtility.getColumnNames("Select * from tbl_mortagage");
+//
+//    }
+//    @Then("The column names should be the following")
+//    public void theColumnNamesShouldBeTheFollowing(List<String> expectedColumnNames) {
+//
+//        Assert.assertEquals(expectedColumnNames, actualColumnNames);
+//
+//    }
 
 
 

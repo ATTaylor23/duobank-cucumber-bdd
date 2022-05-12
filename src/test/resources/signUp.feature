@@ -1,3 +1,4 @@
+@test
 Feature: Sign up
 
 Background: Common steps for all scenarios
